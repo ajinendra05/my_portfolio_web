@@ -1,121 +1,34 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
-import '../data/data.dart';
-import '../screens/widgets/project_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../constants/constants.dart';
+import '../data/data.dart';
+import '../widgets/drawer.dart';
+
 class HomeScreen extends StatelessWidget {
+  static const routeName = '/Home';
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: const [
-            Icon(
-              Icons.circle_sharp,
-              size: 12,
-              color: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 22, 20, 20),
+      appBar: screenSize.width > 500
+          ? null
+          : AppBar(
+              backgroundColor: kGradient2,
             ),
-            SizedBox(
-              width: 10,
+      drawer: screenSize.width > 500
+          ? null
+          : const Drawer(
+              child: MyDrawer(),
             ),
-            Text(
-              "Portfolio",
-              style: TextStyle(color: Colors.black, fontFamily: 'pacifico'),
-            )
-          ],
-        ),
-        // foregroundColor: Colors.black,
-        backgroundColor: Color.fromARGB(255, 160, 154, 154),
-      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 200,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    kGradient1,
-                    kGradient2,
-                  ],
-                ),
-              ),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundImage: AssetImage(imagePath),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-                child: Text(
-              name,
-              style: kTitleText,
-            )),
-            Center(
-                child: Text(
-              "@$username",
-              style: kSubTitleText,
-            )),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                OutlinedButton(
-                    onPressed: () async {
-                      //Code to launch resume
-                      final Uri _url = Uri.parse(resumeLink);
-                      await launchUrl(_url);
-                    },
-                    child: Text(
-                      "View Resume",
-                      style: kSubTitleText,
-                    )),
-                const SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                    onPressed: () async {
-                      //Call to launch email
-                      // final Uri emailLaunchUri = Uri(
-                      //   scheme: 'mailto',
-                      //   path: contactEmail,
-                      // );
-                      final Uri _linktree = Uri(path: contactLinktree);
-                      await launchUrl(_linktree);
-                    },
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.add,
-                          size: 16,
-                          color: Colors.white,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "Contact Links",
-                          style: kSubTitleText.copyWith(color: Colors.white),
-                        )
-                      ],
-                    ))
-              ],
-            ),
+            getHeader(context),
             const SizedBox(
               height: 10,
             ),
@@ -131,6 +44,20 @@ class HomeScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                // const Divider(),
+                                Text("About Me", style: kSectionTitleText),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  aboutMeSummary,
+                                  style: kNormalText,
+                                ),
+                                Text(
+                                  aboutMeSummary2,
+                                  style: kNormalText2.copyWith(
+                                      wordSpacing: 2, fontSize: 20),
+                                ),
                                 Text(
                                   "Experience",
                                   style: kSectionTitleText,
@@ -138,156 +65,29 @@ class HomeScreen extends StatelessWidget {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Text(aboutWorkExperience),
-                                const Divider(),
-                                Text("About Me", style: kSectionTitleText),
-                                const SizedBox(
-                                  height: 10,
+                                Text(
+                                  aboutWorkExperience,
+                                  style: kNormalText2.copyWith(
+                                      wordSpacing: 2, fontSize: 20),
                                 ),
-                                Text(aboutMeSummary),
                               ],
                             ),
+                          ),
+                          const SizedBox(
+                            width: 30,
                           ),
                           Flexible(
                             flex: 1,
                             child: Column(
                               children: [
                                 Card(
-                                  color: Colors.white,
+                                  // color: Colors.white,
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 20, horizontal: 40),
                                     child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Location",
-                                            style: kSubTitleText,
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            children: [
-                                              const Icon(
-                                                Icons.circle,
-                                                size: 16,
-                                              ),
-                                              const SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text(
-                                                location,
-                                              )
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            "Website",
-                                            style: kSubTitleText,
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(website),
-                                              const SizedBox(
-                                                width: 5,
-                                              ),
-                                              const Icon(
-                                                Icons.launch,
-                                                size: 16,
-                                              )
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            "Portfolio",
-                                            style: kSubTitleText,
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(portfolio),
-                                              const SizedBox(
-                                                width: 5,
-                                              ),
-                                              const Icon(
-                                                Icons.launch,
-                                                size: 16,
-                                              )
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            "Email",
-                                            style: kSubTitleText,
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(email),
-                                              const SizedBox(
-                                                width: 5,
-                                              ),
-                                              const Icon(
-                                                Icons.launch,
-                                                size: 16,
-                                              )
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                        ]),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      )
-                    : Column(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Experience",
-                                style: kSectionTitleText,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(aboutWorkExperience),
-                              const Divider(),
-                              Text("About Me", style: kSectionTitleText),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(aboutMeSummary),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Card(
-                                color: Colors.white,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 20, horizontal: 40),
-                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
@@ -301,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                                         Row(
                                           children: [
                                             const Icon(
-                                              Icons.circle,
+                                              Icons.location_pin,
                                               size: 16,
                                             ),
                                             const SizedBox(
@@ -309,14 +109,109 @@ class HomeScreen extends StatelessWidget {
                                             ),
                                             Text(
                                               location,
+                                              style: const TextStyle(
+                                                  color: Colors.white),
                                             )
                                           ],
                                         ),
                                         const SizedBox(
-                                          height: 10,
+                                          height: 20,
                                         ),
+                                        OutlinedButton(
+                                            onPressed: () async {
+                                              //Call to launch email
+                                              final Uri emailLaunchUri = Uri(
+                                                scheme: 'mailto',
+                                                path: contactEmail,
+                                              );
+                                              await launchUrl(emailLaunchUri);
+                                            },
+                                            child: Text(
+                                              "Email",
+                                              style: kSubTitleText,
+                                            )),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        OutlinedButton(
+                                            onPressed: () async {
+                                              final Uri linktree =
+                                                  Uri.parse(contactLinktree);
+                                              await launchUrl(linktree);
+                                            },
+                                            child: SizedBox(
+                                              width: 80,
+                                              child: Row(
+                                                children: [
+                                                  const Icon(
+                                                    Icons.launch,
+                                                    size: 16,
+                                                    color: Colors.white,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    "Contact's",
+                                                    style: kSubTitleText,
+                                                  )
+                                                ],
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // const Divider(),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text("About Me", style: kSectionTitleText),
+                              // const SizedBox(
+                              //   height: 5,
+                              // ),
+                              Text(aboutMeSummary, style: kNormalText),
+                              Text(
+                                aboutMeSummary2,
+                                style: kNormalText2,
+                              ),
+                              Text(
+                                "Experience",
+                                style: kSectionTitleText,
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                aboutWorkExperience,
+                                style: kNormalText2,
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Card(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 40),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
                                         Text(
-                                          "Website",
+                                          "Location",
                                           style: kSubTitleText,
                                         ),
                                         const SizedBox(
@@ -324,60 +219,69 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                         Row(
                                           children: [
-                                            Text(website),
+                                            const Icon(
+                                              Icons.location_pin,
+                                              size: 16,
+                                            ),
                                             const SizedBox(
                                               width: 5,
                                             ),
-                                            const Icon(
-                                              Icons.launch,
-                                              size: 16,
+                                            Text(
+                                              location,
+                                              style: const TextStyle(
+                                                  color: Colors.white),
                                             )
                                           ],
                                         ),
                                         const SizedBox(
-                                          height: 10,
+                                          height: 20,
                                         ),
-                                        Text(
-                                          "Portfolio",
-                                          style: kSubTitleText,
-                                        ),
+                                        OutlinedButton(
+                                            onPressed: () async {
+                                              //Call to launch email
+                                              final Uri emailLaunchUri = Uri(
+                                                scheme: 'mailto',
+                                                path: contactEmail,
+                                              );
+                                              await launchUrl(emailLaunchUri);
+                                            },
+                                            child: SizedBox(
+                                              width: 80,
+                                              child: Center(
+                                                child: Text(
+                                                  "Email",
+                                                  style: kSubTitleText,
+                                                ),
+                                              ),
+                                            )),
                                         const SizedBox(
-                                          height: 10,
+                                          height: 20,
                                         ),
-                                        Row(
-                                          children: [
-                                            Text(portfolio),
-                                            const SizedBox(
-                                              width: 5,
-                                            ),
-                                            const Icon(
-                                              Icons.launch,
-                                              size: 16,
-                                            )
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "Email",
-                                          style: kSubTitleText,
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(email),
-                                            const SizedBox(
-                                              width: 5,
-                                            ),
-                                            const Icon(
-                                              Icons.launch,
-                                              size: 16,
-                                            )
-                                          ],
-                                        ),
+                                        OutlinedButton(
+                                            onPressed: () async {
+                                              final Uri _linktree =
+                                                  Uri(path: contactLinktree);
+                                              await launchUrl(_linktree);
+                                            },
+                                            child: SizedBox(
+                                              width: 80,
+                                              child: Row(
+                                                children: [
+                                                  const Icon(
+                                                    Icons.launch,
+                                                    size: 16,
+                                                    color: Colors.white,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    "Contact's",
+                                                    style: kSubTitleText,
+                                                  )
+                                                ],
+                                              ),
+                                            )),
                                         const SizedBox(
                                           height: 10,
                                         ),
@@ -388,34 +292,6 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-              ),
-            ),
-            Center(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: screenSize.width > 1000
-                    ? GridView.builder(
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2, childAspectRatio: 3),
-                        itemCount: projectList.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return ProjectWidget(
-                            projectData: projectList[index],
-                          );
-                        })
-                    : GridView.builder(
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 1, childAspectRatio: 2),
-                        itemCount: projectList.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return ProjectWidget(
-                            projectData: projectList[index],
-                          );
-                        }),
               ),
             ),
           ],

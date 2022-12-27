@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import '../models/project_model.dart';
 
 //Update with colors of your choice for dp background gradient
-Color kGradient1 = Colors.purple;
-Color kGradient2 = Colors.pinkAccent;
+Color kGradient2 = const Color.fromARGB(255, 58, 14, 72);
+Color kGradient1 = const Color.fromARGB(255, 220, 17, 115);
 
-String imagePath = "images/aditya.jpeg";
+String imagePath = "images/proff.jpg";
 
 //String data to modify
-String name = "Ajinendra Rajpoot";
+String name = "AJINENDRA RAJPOOT";
 String username = "ajinendra05";
 
 //Link to resume on Google Drive
@@ -20,31 +20,31 @@ String contactEmail = "ajinendra05@gmail.com";
 
 String contactLinktree = "https://linktr.ee/ajinendra05";
 
-String aboutWorkExperience =
-    '''
-Hello I am a freelancer
-
-He has previously been a speaker at the Flutter Global Summit'21, Flutter Vikings and events across colleges, universities (like VIT Chennai, Vellore, MIT-ADT), and clubs (IEEE APSIT, SFIT, GirlScript, GeeksforGeeks Student Chapter, Google CrowdSource, and more) here in India. 
+String aboutWorkExperience = '''
+I’m completed my secondary and higher secondary’s education from JNV Mandla. 
+Starting my tech development path from unity game engine to a flutter developer I enjoyed learning new techs to solve problems and to developing new products every time. I have knowledge and work on both cross (Flutter Framework), confined on native (Android Studio). 
+ 
 ''';
 
-String aboutMeSummary =
-    '''
-Aditya is a content creator and has over 5K subscribers on YouTube and a 700+ member community on Discord. 
-📺 YouTube Channel: watch.adityathakur.in
-🚀 Discord Community: discord.adityathakur.in
+String aboutMeSummary = '''
+
+Hello!  I'm Meticulous and creative Mobile App Developer with good knowledge of flutter framework and Android Studio.
+''';
+String aboutMeSummary2 = '''
+Currently I'm pursuing my B.Tech in Computer Science Engineering from Madhav Institute of Technology and Science(MITS) Gwalior. Technology is great passion of mine and I'm very interested in things like engineering, programming, network communication and technology. Writing code and creating new products is one of my favourite things to do, I really like the creativity and problem-solving that comes with it. I’m not only technical but also have a good practice of playing basketball. I’m always in to explore new things. Looking To leverage my skills and expertise for the position as an Android Developer in flutter. 
 ''';
 
-String location = "Dharamshala, India";
+String location = "Jabalpur, India";
 String website = "adityathakur.in";
 String portfolio = "adityathakurxd";
-String email = "mail@adityathakur.in";
+String email = "ajinendra05@gmail.com";
 
 List<Project> projectList = [
   Project(
-      name: "Shades",
+      name: "PlaceMentor",
       description:
-          "Winner IEEE Mandi 'Go Online' Challenge at Electrothon, NIT Hamirpur.",
-      link: "https://github.com/adityathakurxd/shades"),
+          "A platform that bridges the gap between Training & Placement Cell and Students of college",
+      link: "https://placementor-ajinendra05.webflow.io/"),
   Project(
       name: "Fiasco",
       description:
@@ -57,6 +57,6 @@ List<Project> projectList = [
       link: "https://github.com/adityathakurxd/fiasco"),
   Project(
       name: "Flutter Portfolio",
-      description: "A template for Portfolio",
+      description: "A portfolio website with flutter framwork ",
       link: "https://github.com/adityathakurxd/flutter-portfolio")
 ];
