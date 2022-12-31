@@ -22,7 +22,7 @@ String contactLinktree = "https://linktr.ee/ajinendra05";
 
 String aboutWorkExperience = '''
 I’m completed my secondary and higher secondary’s education from JNV Mandla. 
-Starting my tech development path from unity game engine to a flutter developer I enjoyed learning new techs to solve problems and to developing new products every time. I have knowledge and work on both cross (Flutter Framework), confined on native (Android Studio). 
+Starting my tech development path from unity game engine to a flutter developer, I enjoyed learning new techs to solve problems and to developing new products every time. I have knowledge and work on both cross (Flutter Framework), confined on native (Android Studio). 
  
 ''';
 
@@ -43,20 +43,21 @@ List<Project> projectList = [
   Project(
       name: "PlaceMentor",
       description:
-          "A platform that bridges the gap between Training & Placement Cell and Students of college",
+          "A platform that bridges the gap between Training & Placement Cell and Students of college \n \n FLutter, Firebase, Provider",
       link: "https://placementor-ajinendra05.webflow.io/"),
   Project(
-      name: "Fiasco",
+      name: "Customised Search Engine",
       description:
-          "Fiasco is one stop solution to help you manage Family expenses in one place!",
+          "Created a custom search engine with the help of flutter which is responsive on both desktop as well as mobile. \n \n Google custom Search API,flutter,pagination",
       link: "https://github.com/adityathakurxd/fiasco"),
+  // Project(
+  //     name: "Fiasco",
+  //     description:
+  //         "Fiasco is one stop solution to help you manage Family expenses in one place!",
+  //     link: "https://github.com/adityathakurxd/fiasco"),
   Project(
-      name: "Fiasco",
+      name: "Portfolio Website",
       description:
-          "Fiasco is one stop solution to help you manage Family expenses in one place!",
-      link: "https://github.com/adityathakurxd/fiasco"),
-  Project(
-      name: "Flutter Portfolio",
-      description: "A portfolio website with flutter framwork ",
+          "A portfolio website with flutter framwork, responsive on both mobile and desktop",
       link: "https://github.com/adityathakurxd/flutter-portfolio")
 ];

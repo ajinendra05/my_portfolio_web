@@ -37,10 +37,19 @@ class ProjectWidget extends StatelessWidget {
                           const SizedBox(
                             width: 10,
                           ),
-                          Text(
-                            projectData.name,
-                            style: kSectionTitleText.copyWith(
-                                fontSize: constrain.maxHeight * 0.17),
+                          Container(
+                            height: constrain.maxHeight * 0.17,
+                            width: constrain.maxWidth * 0.8,
+                            alignment: Alignment.centerLeft,
+                            child: FittedBox(
+                              child: Text(
+                                projectData.name,
+                                style: kSectionTitleText.copyWith(
+                                    // backgroundColor: Colors.amber,
+                                    fontSize: constrain.maxHeight * 0.17),
+                                // overflow: TextOverflow.clip,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -67,7 +76,7 @@ class ProjectWidget extends StatelessWidget {
                             //     Size.fromHeight(constrain.maxHeight * 0.1)),
                             onPressed: () async {
                               //Launch project on GitHub
-                              if (index == 3) {
+                              if (index == 2) {
                                 showDialog(
                                   barrierColor: Color.fromARGB(182, 24, 23, 23),
                                   context: context,
