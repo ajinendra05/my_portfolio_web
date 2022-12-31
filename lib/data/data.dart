@@ -12,8 +12,8 @@ String name = "AJINENDRA RAJPOOT";
 String username = "ajinendra05";
 
 //Link to resume on Google Drive
-String resumeLink =
-    "https://drive.google.com/file/d/1uZPqMWva6pZxzQxsR_ILLZ_FxJr24QeY/view?usp=sharing";
+// String resumeLink =
+//     "https://drive.google.com/file/d/1uZPqMWva6pZxzQxsR_ILLZ_FxJr24QeY/view?usp=sharing";
 
 //Contact Email
 String contactEmail = "ajinendra05@gmail.com";
@@ -49,7 +49,7 @@ List<Project> projectList = [
       name: "Customised Search Engine",
       description:
           "Created a custom search engine with the help of flutter which is responsive on both desktop as well as mobile. \n \n Google custom Search API,flutter,pagination",
-      link: "https://github.com/adityathakurxd/fiasco"),
+      link: "https://github.com/ajinendra05/custom-google-search-"),
   // Project(
   //     name: "Fiasco",
   //     description:
@@ -59,5 +59,5 @@ List<Project> projectList = [
       name: "Portfolio Website",
       description:
           "A portfolio website with flutter framwork, responsive on both mobile and desktop",
-      link: "https://github.com/adityathakurxd/flutter-portfolio")
+      link: "https://github.com/ajinendra05/my_portfolio_web")
 ];

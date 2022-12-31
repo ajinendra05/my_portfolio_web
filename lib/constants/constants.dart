@@ -122,7 +122,7 @@ Widget getHeader(BuildContext context) {
                               TextButton(
                                   onPressed: () async {
                                     final Uri linktree =
-                                        Uri(path: contactLinktree);
+                                        Uri.parse(contactLinktree);
                                     await launchUrl(linktree);
                                   },
                                   child: Text(
@@ -161,7 +161,7 @@ Widget getHeader(BuildContext context) {
                               TextButton(
                                   onPressed: () async {
                                     final Uri _linktree =
-                                        Uri(path: contactLinktree);
+                                        Uri.parse(contactLinktree);
                                     await launchUrl(_linktree);
                                   },
                                   child: Text(

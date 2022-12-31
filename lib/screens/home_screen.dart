@@ -260,7 +260,7 @@ class HomeScreen extends StatelessWidget {
                                         OutlinedButton(
                                             onPressed: () async {
                                               final Uri _linktree =
-                                                  Uri(path: contactLinktree);
+                                                  Uri.parse(contactLinktree);
                                               await launchUrl(_linktree);
                                             },
                                             child: SizedBox(
